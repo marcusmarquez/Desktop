@@ -1,74 +1,333 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Marcus Marquez — Simple Portfolio</title>
-  <style>
-    :root{--accent:#2563eb;--muted:#6b7280}
-    *{box-sizing:border-box}
-    body{font-family:system-ui,Segoe UI,Arial,sans-serif;margin:0;color:#0f172a;background:#fff}
-    header{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid #eef2ff}
-    .name{font-weight:700;color:var(--accent);font-size:1.125rem}
-    nav a{margin-left:1rem;color:inherit;text-decoration:none;font-weight:600}
-    .hero{padding:3.5rem 1.25rem;text-align:center;background:linear-gradient(180deg,#ffffff,#f8fafc)}
-    .hero h1{font-size:2rem;margin:0 0 .5rem}
-    .hero p{color:var(--muted);max-width:720px;margin:0 auto}
-    .container{max-width:980px;margin:0 auto;padding:2rem 1.25rem}
-    .section{margin-bottom:1.25rem}
-    .section h2{font-size:1.125rem;margin:0 0 .5rem}
-    .skills{display:flex;flex-wrap:wrap;gap:.5rem}
-    .badge{background:#eef2ff;border:1px solid #dbeafe;color:#0f172a;padding:.4rem .6rem;border-radius:.5rem;font-weight:600}
-    footer{padding:1rem;text-align:center;color:var(--muted);font-size:.9rem}
-    @media(min-width:720px){
-      .hero h1{font-size:2.5rem}
-      .layout{display:grid;grid-template-columns:1fr 320px;gap:2rem}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        header nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        header h1 {
+            font-size: 1.8rem;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #3498db;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+        
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+        
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .skill-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-card ul {
+            list-style-position: inside;
+            color: #555;
+        }
+        
+        .skill-card li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+        
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .company-location {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+        
+        .job-dates {
+            font-size: 0.95rem;
+            color: #999;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+        
+        .job-description {
+            margin-left: 1rem;
+        }
+        
+        .job-description li {
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+        
+        .education-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .education-item:last-child {
+            border-bottom: none;
+        }
+        
+        .degree {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .school-name {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 0.3rem;
+        }
+        
+        .graduation-date {
+            font-size: 0.9rem;
+            color: #999;
+            margin-top: 0.3rem;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="name">Marcus Marquez</div>
-    <nav aria-label="Main navigation">
-      <a href="#hero">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-    </nav>
-  </header>
+    <!-- Header -->
+    <header>
+        <nav>
+            <h1>Marcus</h1>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <section id="hero" class="hero">
-      <h1>Welcome — I'm Marcus</h1>
-      <p>I'm a motivated data enthusiast who enjoys turning data into actionable insights. I build models, analyze results, and communicate findings clearly to stakeholders.</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Welcome to My Portfolio</h2>
+        <p>Customer-Focused Professional | Dedicated Team Player | Problem Solver</p>
     </section>
 
-    <div class="container layout">
-      <section id="about" class="section">
-        <h2>About Me</h2>
-        <p>I have strong problem-solving abilities, good communication skills, and a willingness to learn. I enjoy working on projects that require data cleaning, visualization, and model development. I focus on writing reproducible code and clear documentation.</p>
-      </section>
-
-      <aside id="skills" class="section">
-        <h2>Skills</h2>
-        <div class="skills">
-          <span class="badge">Python</span>
-          <span class="badge">Pandas</span>
-          <span class="badge">NumPy</span>
-          <span class="badge">scikit-learn</span>
-          <span class="badge">TensorFlow</span>
-          <span class="badge">PyTorch</span>
-          <span class="badge">SQL</span>
-          <span class="badge">Data Visualization</span>
-          <span class="badge">Feature Engineering</span>
-          <span class="badge">Model Evaluation</span>
-          <span class="badge">Experiment Tracking</span>
+    <!-- About Me Section -->
+    <section id="about">
+        <h2>Professional Summary</h2>
+        <div class="about-content">
+            <p>Equipped with strong problem-solving abilities, willingness to learn, and excellent communication skills. Poised to contribute to team success and achieve positive results. Ready to tackle new challenges and advance organizational objectives with dedication and enthusiasm.</p>
         </div>
-      </aside>
-    </div>
-  </main>
+    </section>
 
-  <footer>
-    © 2025 Marcus Marquez
-  </footer>
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Core Competencies</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Professional Skills</h3>
+                <ul>
+                    <li>Goal Oriented</li>
+                    <li>Problem-Solving</li>
+                    <li>Listening Skills</li>
+                    <li>Organization</li>
+                    <li>Friendly & Outgoing</li>
+                    <li>Reliable & Punctual</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Customer Relations</h3>
+                <ul>
+                    <li>Relationship Building</li>
+                    <li>Customer Satisfaction</li>
+                    <li>Client Support & Guidance</li>
+                    <li>Communication</li>
+                    <li>Follow-up & Issue Resolution</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Operations & Management</h3>
+                <ul>
+                    <li>Record Keeping</li>
+                    <li>Team Collaboration</li>
+                    <li>Cash Register Operations</li>
+                    <li>Training & Development</li>
+                    <li>Equipment Operation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience">
+        <h2>Work Experience</h2>
+        
+        <div class="experience-item">
+            <div class="job-title">Membership Sales</div>
+            <div class="company-location">Costco Wholesale - Everett, WA</div>
+            <div class="job-dates">01/2024 - Current</div>
+            <ul class="job-description">
+                <li>Helped customers navigate choices between services with support for questions such as terms, pricing, and availability.</li>
+                <li>Collaborated with clients to maintain relationships and provide customers with thorough support and guidance.</li>
+                <li>Worked with sales team to collaboratively reach targets, consistently meeting or exceeding personal quotas.</li>
+                <li>Promoted high level of customer satisfaction using strong relationship-building skills, consistent follow-up and prompt issue resolution.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="job-title">Personal Trainer</div>
+            <div class="company-location">Fort Washington Fitness - Fresno</div>
+            <div class="job-dates">09/2022 - 12/2023</div>
+            <ul class="job-description">
+                <li>Built relationships with customers and community to establish long-term business growth.</li>
+                <li>Utilized an effective record-keeping system for tracking customer information.</li>
+                <li>Assisted clients with personal fitness goals through realistic objectives.</li>
+                <li>Designed specific workout systems for individual clients based on performance ability.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="job-title">Fitness Trainer</div>
+            <div class="company-location">Planet Fitness - Fresno</div>
+            <div class="job-dates">12/2021 - 09/2022</div>
+            <ul class="job-description">
+                <li>Maintained relationships with customers and found new ones by identifying needs and offering appropriate services.</li>
+                <li>Demonstrated how to carry out various routines and exercises.</li>
+                <li>Monitored clients' progress and modified programs.</li>
+                <li>Developed customized fitness plans for wide range of clients to expand services.</li>
+                <li>Collaborated with other fitness professionals to develop and implement new programs.</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="job-title">Associate</div>
+            <div class="company-location">In-N-Out Burger - Fresno</div>
+            <div class="job-dates">01/2017 - 02/2022</div>
+            <ul class="job-description">
+                <li>Opened, shelved, and merchandised new products in visually appealing and organized displays for optimal sales promotions.</li>
+                <li>Developed and implemented strategies to increase customer satisfaction and engagement.</li>
+                <li>Managed efficient cash register operations.</li>
+                <li>Helped train new employees in safe practices and warehouse procedures.</li>
+                <li>Used machinery and equipment such as box cutters, shrink-wrap guns and electric pallet jacks.</li>
+                <li>Maintained clean, orderly work environment free of hazards.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2>Education</h2>
+        
+        <div class="education-item">
+            <div class="degree">Bachelor of Science: Criminology</div>
+            <div class="school-name">California State University Fresno - Fresno, CA</div>
+            <div class="graduation-date">12/2020</div>
+        </div>
+
+        <div class="education-item">
+            <div class="degree">High School Diploma</div>
+            <div class="school-name">Turlock High School - Turlock, CA</div>
+            <div class="graduation-date">05/2015</div>
+        </div>
+    </section>
 </body>
 </html>
