@@ -55,6 +55,22 @@
             color: #3498db;
         }
         
+        .contact-info {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: #3498db;
+        }
+        
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -189,6 +205,107 @@
             color: #999;
             margin-top: 0.3rem;
         }
+        
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+            border: 4px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        .skill-icon {
+            display: inline-block;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .section-icon {
+            display: inline-block;
+            margin-right: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .skill-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid #667eea;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+        }
+        
+        .experience-item::before {
+            content: "•";
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            display: inline-block;
+        }
+        
+        .project-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+            transform: translateX(5px);
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-description {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .divider {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
     </style>
 </head>
 <body>
@@ -196,24 +313,34 @@
     <header>
         <nav>
             <h1>Marcus</h1>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-            </ul>
+            <div style="display: flex; gap: 3rem; align-items: center;">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#tech-skills">Tech Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                </ul>
+                <div class="contact-info">
+                    <a href="tel:+12094958769">(209) 495-8769</a>
+                    <a href="mailto:marcusmarquez03@gmail.com">marcusmarquez03@gmail.com</a>
+                </div>
+            </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="profile-avatar">👤</div>
         <h2>Welcome to My Portfolio</h2>
         <p>Customer-Focused Professional | Dedicated Team Player | Problem Solver</p>
     </section>
 
     <!-- About Me Section -->
     <section id="about">
-        <h2>Professional Summary</h2>
+        <h2><span class="section-icon">👨‍💼</span>Professional Summary</h2>
+        <div class="divider"></div>
         <div class="about-content">
             <p>Equipped with strong problem-solving abilities, willingness to learn, and excellent communication skills. Poised to contribute to team success and achieve positive results. Ready to tackle new challenges and advance organizational objectives with dedication and enthusiasm.</p>
         </div>
@@ -221,7 +348,8 @@
 
     <!-- Skills Section -->
     <section id="skills">
-        <h2>Core Competencies</h2>
+        <h2><span class="section-icon">⚙️</span>Core Competencies</h2>
+        <div class="divider"></div>
         <div class="skills-grid">
             <div class="skill-card">
                 <h3>Professional Skills</h3>
@@ -257,9 +385,79 @@
         </div>
     </section>
 
+    <!-- Technical and Digital Skills Section -->
+    <section id="tech-skills">
+        <h2><span class="section-icon">💻</span>Technical & Digital Skills</h2>
+        <div class="divider"></div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Software & Tools</h3>
+                <ul>
+                    <li>Microsoft Office Suite</li>
+                    <li>Google Workspace</li>
+                    <li>Zoom & Virtual Meetings</li>
+                    <li>Salesforce Basics</li>
+                    <li>Data Entry Systems</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Digital & Web</h3>
+                <ul>
+                    <li>Email Management</li>
+                    <li>Web Navigation</li>
+                    <li>Social Media Basics</li>
+                    <li>HTML & CSS Fundamentals</li>
+                    <li>Document Management</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Technical Support</h3>
+                <ul>
+                    <li>Troubleshooting</li>
+                    <li>Customer Tech Support</li>
+                    <li>System Navigation</li>
+                    <li>Database Management Basics</li>
+                    <li>Equipment Setup</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2><span class="section-icon">🚀</span>Projects</h2>
+        <div class="divider"></div>
+
+        <div class="project-card">
+            <div class="project-title">Basic Python</div>
+            <div class="project-description">Foundational Python programming concepts and syntax fundamentals.</div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-title">Working With Data in Python</div>
+            <div class="project-description">Data manipulation, importing, and processing using Python libraries and frameworks.</div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-title">Exploratory Data Analysis</div>
+            <div class="project-description">Analyzing datasets to identify patterns, trends, and insights through visualization and statistical methods.</div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-title">Statistical Data Analysis</div>
+            <div class="project-description">Applying statistical techniques to interpret data, test hypotheses, and draw meaningful conclusions.</div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-title">Software Development Tools</div>
+            <div class="project-description">Version control, debugging, testing, and development workflows using industry-standard tools.</div>
+        </div>
+    </section>
+
     <!-- Work Experience Section -->
     <section id="experience">
-        <h2>Work Experience</h2>
+        <h2><span class="section-icon">💼</span>Work Experience</h2>
+        <div class="divider"></div>
         
         <div class="experience-item">
             <div class="job-title">Membership Sales</div>
@@ -315,7 +513,8 @@
 
     <!-- Education Section -->
     <section id="education">
-        <h2>Education</h2>
+        <h2><span class="section-icon">🎓</span>Education</h2>
+        <div class="divider"></div>
         
         <div class="education-item">
             <div class="degree">Bachelor of Science: Criminology</div>
@@ -324,9 +523,25 @@
         </div>
 
         <div class="education-item">
+            <div class="degree">Machine Learning and AI</div>
+            <div class="school-name">Triple Ten Coding Bootcamp</div>
+            <div class="graduation-date">In Progress</div>
+        </div>
+
+        <div class="education-item">
             <div class="degree">High School Diploma</div>
             <div class="school-name">Turlock High School - Turlock, CA</div>
             <div class="graduation-date">05/2015</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: #f8f9fa;">
+        <h2><span class="section-icon">📞</span>Get In Touch</h2>
+        <div class="divider"></div>
+        <div class="about-content" style="text-align: center;">
+            <p><strong>Phone:</strong> <a href="tel:+12094958769" style="color: #667eea; text-decoration: none;">(209) 495-8769</a></p>
+            <p><strong>Email:</strong> <a href="mailto:marcusmarquez03@gmail.com" style="color: #667eea; text-decoration: none;">marcusmarquez03@gmail.com</a></p>
         </div>
     </section>
 </body>
